@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
+  mount_uploader :image, ImageUploader
   validates_presence_of :title
-
-  attr_accessible :title, :description, :price, :status
+  belongs_to :category
 end

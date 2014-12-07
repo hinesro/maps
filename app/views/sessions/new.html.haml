@@ -1,0 +1,8 @@
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "login-form"}) do |f|
+
+	.login-message Sign in to The Mod and Pop Shop
+
+	%input.email{:name => "user[email]", :placeholder => "Email", :type => "email"}
+	%input.password{:name => "user[password]", :placeholder => "Password", :type => "password"}
+
+	%button{:type => "submit"} Sign In

@@ -1,0 +1,20 @@
+.login-area
+  - if user_signed_in?
+    = "Hello, #{current_user.first_name}"
+    = link_to "Admin", listings_path
+    = link_to "Logout", destroy_user_session_path, method: :delete
+  - else
+    = link_to "Sign In", new_user_session_path
+
+.home-wrap
+  .logo
+
+  .listings
+    - @listings.each do |listing|
+      .listing
+        .listing-title= listing.title
+        .listing-description= listing.description
+        .listing-price= listing.price
+        %img.listing-image{:src => listing.image}
+        - if user_signed_in?
+          = link_to "Edit", edit_listing_path(listing), :class => 'btn btn-default'
