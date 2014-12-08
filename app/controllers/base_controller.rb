@@ -1,6 +1,6 @@
 class BaseController < ApplicationController
 	def home
-		@listings = Listing.order(:title).all
+		@listings = Listing.order(:title).where(:status => "Available")
 	end
 
 	def admin
