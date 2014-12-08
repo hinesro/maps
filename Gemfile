@@ -11,6 +11,7 @@ gem 'haml'
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'carrierwave'
+gem 'rails_12factor', group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
