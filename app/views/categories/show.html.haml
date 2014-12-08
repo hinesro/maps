@@ -1,0 +1,11 @@
+.admin-wrap
+  .admin-header
+    = "#{@category.name} - Listings"
+    %a.maps-btn.add{:href => new_listing_path} Create Listing
+  .admin-body
+    %ul.content-list
+      - @category.listings.each do |listing|
+        %li.content-list-item
+          %a.content-link{:href => listing_path(listing)}= listing.title
+          %a.maps-btn.delete{:href => listing_path(listing), :'data-method' => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete listing #{listing.title}?")) }} Delete
+          %a.maps-btn{:href => edit_listing_path(listing)} Edit

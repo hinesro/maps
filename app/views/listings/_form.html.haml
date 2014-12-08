@@ -1,13 +1,13 @@
-= simple_form_for @listing, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @listing, :html => { :class => 'admin-form' } do |f|
   = f.input :title
-  = error_span(@listing[:title])
-  = f.input :description
-  = error_span(@listing[:description])
+  %label Description
+  = f.text_area :description
   = f.input :price
-  = error_span(@listing[:price])
+  %label Image
   = f.file_field :image
-  = error_span(@listing[:image])
-  = f.input :status
-  = error_span(@listing[:status])
-  = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), listings_path, :class => 'btn btn-default'
+  %label Status
+  = f.select :status, ['Available', 'Pending', 'Sold']
+  %label Category
+  = f.select :category_id, @categories.map{|c| [c.name, c.id]}
+  %button.maps-btn.save Save
+  %a.maps-btn.cancel{:href => @listing.new_record? ? '/admin' : listing_path(@listing)} Cancel

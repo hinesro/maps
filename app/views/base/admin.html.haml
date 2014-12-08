@@ -1,0 +1,13 @@
+.admin-wrap
+	.admin-header
+		Manage Listings
+		%a.maps-btn.add{:href => new_category_path} Create Category
+	.admin-body
+		%ul.content-list
+			%li.content-list-item
+				%a.content-link{:href => listings_path}= "All Listings (#{Listing.count})"
+			- @categories.each do |category|
+				%li.content-list-item
+					%a.content-link{:href => category_path(category)}= "#{category.name} (#{category.listings.count} listings)"
+					%a.maps-btn.delete{:href => category_path(category), :'data-method' => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Are you sure you want to delete category '#{category.name}'?")) }} Delete
+					%a.maps-btn{:href => edit_category_path(category)} Edit

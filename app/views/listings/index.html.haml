@@ -1,0 +1,11 @@
+.admin-wrap
+  .admin-header
+    All Listings
+    %a.maps-btn.add{:href => new_listing_path} Create Listing
+  .admin-body
+    %ul.content-list
+      - @listings.each do |listing|
+        %li.content-list-item
+          %a.content-link{:href => listing_path(listing)}= listing.title
+          %a.maps-btn.delete{:href => '#'} Delete
+          %a.maps-btn{:href => edit_listing_path(listing)} Edit

@@ -1,9 +1,11 @@
 class BaseController < ApplicationController
 	def home
-		@listings = Listing.all
+		@listings = Listing.order(:title).all
 	end
 
 	def admin
-		@categories = Category.all
+		return redirect_to '/' unless user_signed_in?
+		
+		@categories = Category.order(:name).all
 	end
 end

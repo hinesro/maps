@@ -1,0 +1,6 @@
+= simple_form_for @category, :html => { :class => 'admin-form' } do |f|
+  = f.input :name
+  %label Description
+  = f.text_area :description
+  %button.maps-btn.save Save
+  %a.maps-btn.cancel{:href => @category.new_record? ? '/admin' : category_path(@category)} Cancel

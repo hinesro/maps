@@ -1,0 +1,112 @@
+@mixin box-sizing($boxmodel) {
+	-webkit-box-sizing: $boxmodel;
+	-moz-box-sizing: $boxmodel;
+	box-sizing: $boxmodel;
+}
+
+@mixin gradient($start, $stop) {
+	background: $start;
+	background: -moz-linear-gradient(top, $start 0%, $stop 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop));
+	background: -webkit-linear-gradient(top, $start 0%, $stop 100%);
+	background: -o-linear-gradient(top, $start 0%, $stop 100%);
+	background: -ms-linear-gradient(top, $start 0%, $stop 100%);
+	background: linear-gradient(to bottom, $start 0%, $stop 100%);
+}
+
+@mixin linear-gradient($gradient_start, $gradient_end) {
+	background: $gradient_start; /* Old browsers */
+	background: -moz-linear-gradient(top,  $gradient_start 0%, $gradient_end 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$gradient_start), color-stop(100%,$gradient_end)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $gradient_start 0%,$gradient_end 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $gradient_start 0%,$gradient_end 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $gradient_start 0%,$gradient_end 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  $gradient_start 0%,$gradient_end 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gradient_start', endColorstr='$gradient_end',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin box-shadow($shadow...) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	-ms-box-shadow: $shadow;
+	-o-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin border-radius($rad) {
+	-webkit-border-radius: $rad;
+	-moz-border-radius: $rad;
+	-ms-border-radius: $rad;
+	-o-border-radius: $rad;
+	border-radius: $rad;
+}
+
+@mixin inner-border($thickness, $color, $blur) {
+	@include box-shadow((-$thickness) (-$thickness) $blur $color inset, $thickness $thickness $blur $color inset, (-$thickness) $thickness $blur $color inset, $thickness (-$thickness) $blur $color inset);
+}
+
+@mixin background-gradient {
+	background: #05070c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #05070c 0%, #212d33 74%, #080a14 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#05070c), color-stop(74%,#212d33), color-stop(100%,#080a14)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #05070c 0%,#212d33 74%,#080a14 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #05070c 0%,#212d33 74%,#080a14 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #05070c 0%,#212d33 74%,#080a14 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #05070c 0%,#212d33 74%,#080a14 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#05070c', endColorstr='#080a14',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin transport-controls($border: $transportControlBackgroundColor) {
+	background: $transportControlBackgroundColor;
+	border: 2px solid $transportControlBorderColor;
+}
+
+@mixin focused-action-button {
+	box-shadow: inset 0 0 2px 2px $actionButtonFocusedBorderColor;
+	@include linear-gradient($actionButtonFocusedColor, $actionButtonFocusedHighlight);
+}
+
+@mixin track-thumb {
+	position: relative;
+	float: left;
+	height: 90px;
+	padding-left: 20px;
+	margin-top: 15px;
+}
+
+@mixin playback-controls {
+	background: $transportControlBackgroundColor;
+}
+
+@mixin focused-button {
+	box-shadow: inset 0 0 2px 2px $buttonFocusedBorderColor;
+	@include linear-gradient($buttonFocusedColor, $buttonFocusedColorHighLight);
+}
+
+@mixin pressed-button {
+	color: #566a55;
+	box-shadow: inset 0 0 2px 2px $buttonPressedBorderColor;
+	@include linear-gradient($buttonPressedColor, $buttonPressedHighlight);
+}
+
+@mixin action-button {
+	@include linear-gradient($actionButtonColor, $actionButtonHighlight);
+}
+
+@mixin focused-action-button {
+	box-shadow: inset 0 0 2px 2px $actionButtonFocusedBorderColor;
+	@include linear-gradient($actionButtonFocusedColor, $actionButtonFocusedHighlight);
+}
+
+@mixin translate($x: 0, $y: 0, $z: 0) {
+	-webkit-transform: translate3d($x, $y, $z);
+	transform: translate3d($x, $y, $z);
+}
+
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}

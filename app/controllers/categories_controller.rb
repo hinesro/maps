@@ -4,36 +4,47 @@ class CategoriesController < ApplicationController
   respond_to :html
 
   def index
-    @categories = Category.all
-    respond_with(@categories)
+    redirect_to '/admin'
   end
 
   def show
+    return redirect_to '/' unless user_signed_in?
+
+    @listings = @category.listings.order(:title)
     respond_with(@category)
   end
 
   def new
+    return redirect_to '/' unless user_signed_in?
+
     @category = Category.new
     respond_with(@category)
   end
 
   def edit
+    return redirect_to '/' unless user_signed_in?
   end
 
   def create
+    return redirect_to '/' unless user_signed_in?
+
     @category = Category.new(category_params)
     @category.save
     respond_with(@category)
   end
 
   def update
+    return redirect_to '/' unless user_signed_in?
+
     @category.update(category_params)
     respond_with(@category)
   end
 
   def destroy
+    return redirect_to '/' unless user_signed_in?
+    
     @category.destroy
-    respond_with(@category)
+    redirect_to '/admin'
   end
 
   private
@@ -42,6 +53,6 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params[:category]
+      params.require(:category).permit(:name, :description)
     end
 end

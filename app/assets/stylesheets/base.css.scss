@@ -9,9 +9,112 @@
 
 html {
 	font-size: 20px;
+	font-family: GothamLight;
 }
 
 html, body {
 	width: 100%;
 	height: 100%;
+}
+
+body {
+	padding-top: 3rem;
+	background-image: url('bg.png');
+}
+
+.alert {
+	padding: 0.5rem 1rem;
+	font-family: GothamMedium;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+	&.alert-danger {
+		background-color: rgb(255, 100, 100);
+	}
+	&.alert-success {
+		background-color: rgb(50, 200, 50);
+	}
+}
+
+.top-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #eee;
+	padding: 0.8rem 0;
+	box-shadow: 0 0.5rem 0.75rem rgba(255, 255, 255, 0.75) inset,
+				0 0.5rem 0.75rem rgba(255, 255, 255, 0.15) inset;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	z-index: 999;
+
+	.user-message {
+		float: left;
+		padding-left: 4rem;
+	}
+
+	a {
+		float: right;
+		padding: 0 1rem;
+		font-size: 1.1rem;
+		text-decoration: none;
+		color: #000;
+
+		i {
+			padding: 0 0.25rem;
+		}
+	}
+
+	a.home-btn {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 3rem;
+		height: 100%;
+		border-right: 1px solid rgba(0, 0, 0, .25);
+		margin: 0;
+		padding: 0;
+
+		&:before {
+			display: block;
+			content: '\f015';
+			text-align: center;
+			line-height: 3rem;
+			font-family: FontAwesome;
+		}
+	}
+}
+
+.maps-btn {
+	font-size: 1.4rem;
+	background-color: #fff;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.4rem;
+	color: #000;
+	text-decoration: none;
+	box-shadow: 0 2px 3px rgba(255,255,255, 0.75) inset, 
+				0 -1px 5px rgba(0, 0, 0, 0.25) inset, 
+				0 1px 2px #000;
+	font-family: GothamLight;
+
+	&.add {
+		background-color: rgb(180, 215, 255);
+
+		&:before {
+			display: inline-block;
+			font-family: FontAwesome;
+			content: '\f067';
+			padding-right: 0.5rem;
+		}
+	}
+
+	&.delete {
+		background-color: rgb(255, 100, 100);
+
+		&:before {
+			display: inline-block;
+			font-family: FontAwesome;
+			content: '\f1f8';
+			padding-right: 0.5rem;
+		}
+	}
 }

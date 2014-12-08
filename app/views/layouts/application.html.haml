@@ -6,6 +6,22 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    .top-bar
+      %a.home-btn{:href => '/'}
+      - if user_signed_in?
+        .user-message
+          = "Hello, #{current_user.first_name}"
+        %a{:href => destroy_user_session_path, 'data-method' => 'delete'}
+          Sign Out
+          %i.fa.fa-sign-out
+        %a{:href => '/admin'}
+          Admin
+          %i.fa.fa-gear
+      - else
+        %a{:href => new_user_session_path}
+          Sign In
+          %i.fa.fa-sign-in
+
     - if notice
       %p{:class => 'alert alert-success'}= notice
     - if alert
