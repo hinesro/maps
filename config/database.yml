@@ -35,6 +35,7 @@ test:
 
 production:
   <<: *default
-  database: maps_production
-  username: maps
-  password: <%= ENV['MAPS_DATABASE_PASSWORD'] %>
+  host: ec2-54-221-249-3.compute-1.amazonaws.com
+  database: d6hqhph7rdjp3o
+  username: rtmzdgqtfueeuq
+  password: 0msQ2fl1JqYq3eCPF7yZQ_Pgz3
